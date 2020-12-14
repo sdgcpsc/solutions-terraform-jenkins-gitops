@@ -91,10 +91,13 @@ module "jenkins-gke" {
   node_metadata            = "GKE_METADATA_SERVER"
   node_pools = [
     {
-      name         = "butler-pool"
+      name         = "wroker-pool"
+      machine_type = "e2-medium"
       min_count    = 1
       max_count    = 4
-      auto_upgrade = true
+      auto_upgrade = false
+      auto_repair  = true
+      preemptible  = true
     }
   ]
 }
